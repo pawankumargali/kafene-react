@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import { setAuth } from '../../utils/auth';
+import { setAuth, isAuth } from '../../utils/auth';
 import './Navbar.css';
 
 function Navbar(props) {
@@ -29,6 +29,7 @@ function Navbar(props) {
                     <p className="BrandName">Kafene</p>
                 </div>
                 
+                {isAuth() &&
                 <nav>
                     <Link className={isActive['orders'] ? "MenuItem MenuItemActive" : "MenuItem"} to='/orders' >Orders</Link>
                     <Link className={isActive['products'] ? "MenuItem MenuItemActive" : "MenuItem"} to='/products' >Products</Link>
@@ -41,6 +42,7 @@ function Navbar(props) {
                         Logout
                     </button>
                 </nav> 
+                }
             </div>
         </div>
     )
